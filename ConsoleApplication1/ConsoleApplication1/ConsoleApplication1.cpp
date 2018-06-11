@@ -42,7 +42,7 @@ void date::yunsuan(int year, int month, int day)
 
 void date::display()
 {
-	cout << years << "年" << months << "月" << days << "日" << "基类"<<endl;
+	cout << years << "年" << months << "月" << days << "日" << " 基类"<<endl;
 }
 
 date date::operator -(date&oj)
@@ -55,26 +55,19 @@ date date::operator -(date&oj)
 class CMydate :public date
 {
 public:
-	virtual void fuzhi(int year, int month, int day);
 	void display();
 };
 
-void CMydate::fuzhi(int year, int month, int day)
-{
-	years = year;
-	months = month;
-	days = day;
-}
-
 void CMydate::display()
 {
-	cout << years << "年" << months << "月" << days << "日" <<"派生类" <<endl;
+	cout << years << "年" << months << "月" << days << "日" <<" 派生类" <<endl;
 }
 
 int main()
 {
 	date *p;
 	p = new CMydate;
+	p->yunsuan(1,2,3);
 	p->display();
 	p->date::display();
     return 0;
