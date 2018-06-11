@@ -7,13 +7,13 @@ using namespace std;
 
 class date
 {
-public:
+protected:
 	int years;
 	int months;
 	int days;
 public:
 	void yunsuan(int year, int month, int day);
-	void display();
+	virtual void display();
 	date operator -(date&oj);
 };
 
@@ -42,7 +42,7 @@ void date::yunsuan(int year, int month, int day)
 
 void date::display()
 {
-	cout << years << "年" << months << "月" << days << "日" << endl;
+	cout << years << "年" << months << "月" << days << "日" << "基类"<<endl;
 }
 
 date date::operator -(date&oj)
@@ -56,6 +56,7 @@ class CMydate :public date
 {
 public:
 	virtual void fuzhi(int year, int month, int day);
+	void display();
 };
 
 void CMydate::fuzhi(int year, int month, int day)
@@ -65,11 +66,15 @@ void CMydate::fuzhi(int year, int month, int day)
 	days = day;
 }
 
+void CMydate::display()
+{
+	cout << years << "年" << months << "月" << days << "日" <<"派生类" <<endl;
+}
+
 int main()
 {
 	date *p;
-	p = new date;
-	p->CMydate::fuzhi(1,2,3);
+	p = new CMydate;
 	p->display();
 	p->date::display();
     return 0;
